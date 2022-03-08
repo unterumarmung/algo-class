@@ -10,12 +10,15 @@ def last_line_valid(path):
     :return: have or haven't
     """
     with open(path, 'r') as f:
-        text = f.readlines()
         try:
+            text = f.readlines()
             last_char = text[-1][-1]
             return last_char == '\n'
         except IndexError:
             return False
+        except UnicodeDecodeError:
+            # binary file found
+            pass
 
 
 def fix_last_line(path):
