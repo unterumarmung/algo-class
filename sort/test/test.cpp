@@ -6,29 +6,51 @@
 #include <string>
 #include <util.hpp>
 
-TEST_CASE("sort") {
-    SECTION("selection_sort") {
-        auto v = generate_unsorted_vector(1000);
-        REQUIRE(!std::is_sorted(v.begin(), v.end()));
+TEST_CASE("selection_sort") {
+    auto v = generate_unsorted_vector(1000);
+    REQUIRE(!std::is_sorted(v.begin(), v.end()));
 
-        selection_sort(v);
+    selection_sort(v);
 
-        REQUIRE(std::is_sorted(v.begin(), v.end()));
-    }
-    SECTION("insertion_sort") {
-        auto v = generate_unsorted_vector(1000);
-        REQUIRE(!std::is_sorted(v.begin(), v.end()));
+    REQUIRE(std::is_sorted(v.begin(), v.end()));
+}
+TEST_CASE("insertion_sort") {
+    auto v = generate_unsorted_vector(1000);
+    REQUIRE(!std::is_sorted(v.begin(), v.end()));
 
-        insertion_sort(v);
+    insertion_sort(v);
 
-        REQUIRE(std::is_sorted(v.begin(), v.end()));
-    }
-    SECTION("insertion_sort") {
-        auto v = generate_unsorted_vector(1000);
-        REQUIRE(!std::is_sorted(v.begin(), v.end()));
+    REQUIRE(std::is_sorted(v.begin(), v.end()));
+}
+TEST_CASE("merge_sort") {
+    auto v = generate_unsorted_vector(1000);
+    REQUIRE(!std::is_sorted(v.begin(), v.end()));
 
-        merge_sort(v);
+    merge_sort(v);
 
-        REQUIRE(std::is_sorted(v.begin(), v.end()));
-    }
+    REQUIRE(std::is_sorted(v.begin(), v.end()));
+}
+TEST_CASE("merge_sort_optimized") {
+    auto v = generate_unsorted_vector(1000);
+    REQUIRE(!std::is_sorted(v.begin(), v.end()));
+
+    merge_sort_optimized(v);
+
+    REQUIRE(std::is_sorted(v.begin(), v.end()));
+}
+TEST_CASE("heap_sort") {
+    auto v = generate_unsorted_vector(1000);
+    REQUIRE(!std::is_sorted(v.begin(), v.end()));
+
+    heap_sort(v);
+
+    REQUIRE(std::is_sorted(v.begin(), v.end()));
+}
+TEST_CASE("quick_sort") {
+    auto v = generate_unsorted_vector(1000);
+    REQUIRE(!std::is_sorted(v.begin(), v.end()));
+
+    quick_sort(v);
+
+    REQUIRE(std::is_sorted(v.begin(), v.end()));
 }

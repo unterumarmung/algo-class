@@ -1,6 +1,8 @@
 #pragma once
 
-#include <algorithm>  // std::iota, std::reverse
+#include <algorithm>  // std::reverse
+#include <numeric>    // std::iota
+#include <random>
 #include <vector>
 
 template <typename ValueType = int>
@@ -11,3 +13,5 @@ auto generate_unsorted_vector(size_t size) {
 
     return v;
 }
+
+inline auto get_random_value = std::minstd_rand(42);
