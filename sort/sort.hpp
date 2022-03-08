@@ -3,6 +3,8 @@
 #include <algorithm>   // std::min_element, std::swap
 #include <functional>  // std::less
 #include <iterator>    // std::begin, std::end, std::distance
+#include <list>
+#include <vector>
 
 #include "util.hpp"
 
@@ -244,4 +246,30 @@ void sort(Iter first, Iter last, const auto& comparator) {
 template <typename Range, typename Comparator = std::less<>>
 void quick_sort(Range& range, const Comparator& comparator = {}) {
     quick::sort(std::begin(range), std::end(range), comparator);
+}
+
+template <typename Range, typename Comparator = std::less<>>
+void bucket_sort(Range& range, const Comparator& comparator = {}) {
+    using value_type = std::iterator_traits<decltype(std::begin(range))>::value_type;
+    std::vector<std::list<value_type>> buckets(std::size(range));
+
+    auto min = *std::min_element(std::begin(range), std::end(range), comparator);
+
+    for (auto&& element : range) {
+        const auto k = static_cast<size_t>((element - min) / std::size(range));
+        buckets[k].push_back(element);
+    }
+
+    for (auto&& bucket : buckets) {
+        bucket.sort(comparator);
+    }
+
+    auto iter = std::begin(range);
+
+    for (auto&& bucket : buckets) {
+        for (auto&& element : bucket) {
+            *iter = element;
+            iter++;
+        }
+    }
 }

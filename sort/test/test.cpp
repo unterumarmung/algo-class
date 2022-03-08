@@ -54,3 +54,11 @@ TEST_CASE("quick_sort") {
 
     REQUIRE(std::is_sorted(v.begin(), v.end()));
 }
+TEST_CASE("bucket_sort") {
+    auto v = generate_unsorted_vector(1000);
+    REQUIRE(!std::is_sorted(v.begin(), v.end()));
+
+    bucket_sort(v);
+
+    REQUIRE(std::is_sorted(v.begin(), v.end()));
+}
