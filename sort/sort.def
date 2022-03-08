@@ -1,0 +1,7 @@
+SORT(selection_sort)
+SORT(insertion_sort)
+SORT(merge_sort)
+SORT(merge_sort_optimized)
+SORT(heap_sort)
+SORT(quick_sort)
+SORT(bucket_sort)
