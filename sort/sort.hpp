@@ -152,7 +152,7 @@ void sift_down(auto& array, size_t index, size_t size, const auto& comparator) {
     while (get_left_child(index) < size) {
         auto new_index = get_left_child(index);
 
-        const auto right_child_exists = [&array, size](const auto index) { return get_right_child(index) < size; };
+        const auto right_child_exists = [size](const auto index) { return get_right_child(index) < size; };
 
         const auto compare_right_and_left = [&array, &comparator](const auto index) {
             return comparator(array[get_right_child(index)], array[get_left_child(index)]);
@@ -250,7 +250,7 @@ void quick_sort(Range& range, const Comparator& comparator = {}) {
 
 template <typename Range, typename Comparator = std::less<>>
 void bucket_sort(Range& range, const Comparator& comparator = {}) {
-    using value_type = std::iterator_traits<decltype(std::begin(range))>::value_type;
+    using value_type = typename std::iterator_traits<decltype(std::begin(range))>::value_type;
     std::vector<std::list<value_type>> buckets(std::size(range));
 
     auto min = *std::min_element(std::begin(range), std::end(range), comparator);
