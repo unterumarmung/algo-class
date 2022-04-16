@@ -3,6 +3,7 @@ project(algo-class)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include(FetchContent)
 
@@ -25,3 +26,4 @@ set(CATCH_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/third-party/catch)
 enable_testing()
 
 add_subdirectory(sort)
+add_subdirectory(bst)
